@@ -286,6 +286,11 @@ Check in browser on [http://localhost:5000/](http://localhost:5000/)
 Brad Traversy
 [Traversy Media](http://www.traversymedia.com)
 
+### Contributor
+
+Dennis Christen
+[devmaster518](https://github.com/devmaster518)
+
 ### Version
 
 2.0.0
