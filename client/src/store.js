@@ -1,18 +1,18 @@
-import { createStore, applyMiddleware } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import thunk from 'redux-thunk';
-import rootReducer from './reducers';
+import { configureStore } from '@reduxjs/toolkit';
+import alertReducer from './slices/alertSlice';
+import authReducer from './slices/authSlice';
+import profileReducer from './slices/profileSlice';
+import postReducer from './reducers/post';
 import setAuthToken from './utils/setAuthToken';
 
-const initialState = {};
-
-const middleware = [thunk];
-
-const store = createStore(
-  rootReducer,
-  initialState,
-  composeWithDevTools(applyMiddleware(...middleware))
-);
+const store = configureStore({
+  reducer: {
+    alert: alertReducer,
+    auth: authReducer,
+    profile: profileReducer,
+    post: postReducer
+  }
+});
 
 /*
   NOTE: set up a store subscription listener

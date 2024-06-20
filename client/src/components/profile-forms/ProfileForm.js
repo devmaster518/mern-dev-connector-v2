@@ -2,7 +2,7 @@ import React, { Fragment, useState, useEffect } from 'react';
 import { Link, useMatch, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { createProfile, getCurrentProfile } from '../../actions/profile';
+import { createProfile, getCurrentProfile } from '../../slices/profileSlice';
 
 /*
   NOTE: declare initialState outside of component
@@ -25,7 +25,7 @@ const initialState = {
 };
 
 const ProfileForm = ({
-  profile: { profile, loading },
+  profile: { profile },
   createProfile,
   getCurrentProfile
 }) => {
@@ -43,7 +43,7 @@ const ProfileForm = ({
 
     // if we finished loading and we do have a profile
     // then build our profileData
-    if (!loading && profile) {
+    if (profile) {
       const profileData = { ...initialState };
       for (const key in profile) {
         if (key in profileData) profileData[key] = profile[key];
@@ -57,7 +57,7 @@ const ProfileForm = ({
       // set local state with the profileData
       setFormData(profileData);
     }
-  }, [loading, getCurrentProfile, profile]);
+  }, [getCurrentProfile, profile]);
 
   const {
     company,
